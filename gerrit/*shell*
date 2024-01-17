@@ -1,0 +1,31 @@
+joey@crucible:~/projects/sandbox/wip/gerrit$ 
+joey@crucible:~/projects/sandbox/wip/gerrit$ 
+joey@crucible:~/projects/sandbox/wip/gerrit$ ls
+gather  gather.sh  gather.sh~
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather.sh --help
+PATH: ./gather
+joey@crucible:~/projects/sandbox/wip/gerrit$ 
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather.sh --help
+PATH: ./gather
+./gather.sh: line 6: ./gather/gather/main/utils.sh: No such file or directory
+./gather.sh: line 7: declare: pgmroot: not found
+joey@crucible:~/projects/sandbox/wip/gerrit$ find . -name 'utils.sh'
+bash: syntax error near unexpected token `;'
+joey@crucible:~/projects/sandbox/wip/gerrit$ find . -name 'utils.sh'
+./gather/main/utils.sh
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather.sh
+PATH: ./gather
+./gather.sh: line 7: declare: pgmroot: not found
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather
+bash: ./gather: Is a directory
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather.sh
+PATH: ./gather
+HELLO
+declare -r pgmroot="/home/joey/projects/sandbox/wip"
+joey@crucible:~/projects/sandbox/wip/gerrit$ ./gather.sh
+
+** -----------------------------------------------------------------------
+** ERROR: --repo is required
+** -----------------------------------------------------------------------
+
+joey@crucible:~/projects/sandbox/wip/gerrit$ 

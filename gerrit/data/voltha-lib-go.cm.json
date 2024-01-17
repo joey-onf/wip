@@ -1,0 +1,6 @@
+"[VOL-5213] - update sarama client to 1.37.0\n\n[VOL-5238] - patch job failure in voltha-lib-go-unit-test\n\nDependent jira tickets:\n  * [VOL-5222] - upgrade golang to v1.17.10\n\nChange-Id: I58dbd754e70f9443bc3801d21a3064df982d1bcd\n"
+"(VOL-4959) retry mechanism when read/write to KAFKA and KV store\n\nChange-Id: Ib83d2ded64a86c9e75a1366d2011e0897c66925d\n"
+"Changed to use maps instead of lists for flows, groups, and meters.\n\nChange-Id: I4cb80897c0a3f8ff9f10cd1e02c3cb6c62695e9c\n"
+"draft - load balancing by using kafka\n\nChange-Id: Idd1b43dbd6248edea42468a9268c71aa2a5276fb\n"
+"WIP Updates for partition based load balancing\n\nChange-Id: Ic917a7007fa8e6ed9e454fb5a9fe71d9e8e35d4f\n"
+null
