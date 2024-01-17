@@ -1,0 +1,77 @@
+2c9599
+===========================================================================
+  o get version:
+    src: VERSION (head -n1 VERSION)
+    src: gopkg.toml, go.mod
+    src: pkg.json
+    src: pom.xml    (xmllint --xpath ... pom.xml)o
+    else: fail
+
+  o is verison released (?)
+    - if [[ "$NEW_VERSION" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]
+    - if semver_strict
+
+  o existing tag check
+
+  o semverParseInfo()
+
+# if it's a -dev version check if a previous tag has been created (to avoid going from 2.7.0-dev to 2.7.1-dev)
+  o is_valid_version
+      # if minor == 0, check that there was a release with MAJOR-1.X.X
+      # if patch == 0, check that there was a release with MAJOR.MINOR-1.X
+      # if patch != 0 check that there was a release with MAJOR.MINOR.PATCH-1
+      # if we are the beginning the is no parent, but that's fine
+
+  o function dockerfile_parentcheck
+
+
+b2c0702
+===========================================================================
+  o function is_git_tag_duplicated {
+     - check mildly different, sha256 accumulated early or in case statement
+     - parent-less FROM scratch
+
+f07a28fa6b2
+===========================================================================
+  o # when not running under Jenkins, use current dir as workspace
+  o WORKSPACE=${WORKSPACE:-.}
+
+
+
+Deltas
+======
+  o fail_validation=1
+     b2c0 - exit if version not found
+     fa07 - [why?] continue checking when version not found.
+  o git tag
+     b2c0 - git tag
+     fa07 - git tag -l
+  o existing git tags:
+     b2c0 - git tag -n
+     fa07 - git tag -l
+  o is_git_tag_duplicated:
+     b2c0 - exit if duplicated
+     fa07 - [why?] continue on
+  o semverParseInfo
+     b2c0 - no
+     fa07 - yes
+  o is_valid_version
+     b2c0 - no
+     fa07 - yes
+  o check version values
+     b2c0 - check all version strings
+     fa07 - check all version strings
+     2c95 - only check first identified
+  o docker_file_parent_check
+       - different df_pattern
+       - fa07 extracted extra platform field, checks SHA strings
+       - handles scratch image detection differently
+       - fa07 - support distroless images
+       - fa07 - -z version string check
+     b2c0 - df_pattern="FROM ([^:]*):(.*)"
+     fa07 - df_pattern="[FfRrOoMm] +(--platform=[^ ]+ +)?([^@: ]+)(:([^: ]+)|@sha[^ ]+)?"
+
+fa07 - Docker scratch images may have back door access for acceptance
+       as an eventual fall-through case.  b2c0702 simply allows it in
+       early.
+
